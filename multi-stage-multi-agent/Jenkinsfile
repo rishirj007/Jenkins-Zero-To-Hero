@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build Java') {
             steps {
-                dir('backend') {
+                dir('multi-stage-multi-agent/backend') {
                     sh 'mvn clean compile'
                 }
             }
@@ -12,7 +12,7 @@ pipeline {
 
         stage('Run Java') {
             steps {
-                dir('backend') {
+                dir('multi-stage-multi-agent/backend') {
                     sh 'mvn exec:java'
                 }
             }
@@ -20,7 +20,7 @@ pipeline {
 
         stage('Install Node.js Packages') {
             steps {
-                dir('frontend') {
+                dir('multi-stage-multi-agent/frontend') {
                     sh 'npm install'
                 }
             }
@@ -28,7 +28,7 @@ pipeline {
 
         stage('Run Node.js App') {
             steps {
-                dir('frontend') {
+                dir('multi-stage-multi-agent/frontend') {
                     sh 'npm start'
                 }
             }
