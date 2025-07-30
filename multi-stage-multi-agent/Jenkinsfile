@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'Maven 3.26 '        // Set up this tool in Jenkins
-        nodejs 'NodeJS 1.6.5'     // Also set up in Jenkins
-    }
-
     stages {
         stage('Build Java') {
             steps {
@@ -23,7 +18,7 @@ pipeline {
             }
         }
 
-        stage('Install Node.js') {
+        stage('Install Node.js Packages') {
             steps {
                 dir('frontend') {
                     sh 'npm install'
@@ -31,7 +26,7 @@ pipeline {
             }
         }
 
-        stage('Run Node.js') {
+        stage('Run Node.js App') {
             steps {
                 dir('frontend') {
                     sh 'npm start'
